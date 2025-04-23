@@ -1,0 +1,17 @@
+{
+  "semi": true,
+  "singleQuote": true,
+  "trailingComma": "all",
+  "printWidth": 100,
+  "tabWidth": 2,
+  "bracketSpacing": true,
+  "arrowParens": "always",
+  "endOfLine": "auto",
+  "curly": "error",
+  "eqeqeq": ["error", "always"],
+  "no-implicit-coercion": "error",
+  "no-else-return": "error",
+  "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+  "no-var": "error",
+  "prefer-const": "error"
+}
