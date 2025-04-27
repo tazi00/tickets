@@ -1,13 +1,13 @@
 'use client';
 
-import { LucideSquareArrowOutUpRight, Trash } from 'lucide-react';
+import { Edit, LucideSquareArrowOutUpRight, Trash } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
-import { ticketPath } from '@/utils/paths';
+import { ticketEditPath, ticketPath } from '@/utils/paths';
 
 import { deleteTicketById } from '../actions/deleteTicketById';
 import { TICKET_ICONS } from '../constants';
@@ -56,9 +56,9 @@ function TicketItem({ ticket, isDetail = false }: TicketItemProp) {
           </p>
         </CardContent>
       </Card>
-      <div className="p-3 border border-muted-foreground rounded-md">
+      <div className="">
         <ul className="flex flex-col gap-3">
-          <li>
+          <li className="border border-muted-foreground p-3  rounded-md">
             {!isDetail ? (
               <Link href={ticketPath(ticket.id)}>
                 <LucideSquareArrowOutUpRight size={16} />
@@ -73,12 +73,12 @@ function TicketItem({ ticket, isDetail = false }: TicketItemProp) {
               </Button>
             )}
           </li>
-          {/* <li>
-            <Link href={ticketPath(ticket.id)}>
-              <LucideSquareArrowOutUpRight size={16} />
+          <li className="border border-muted-foreground p-3  rounded-md">
+            <Link href={ticketEditPath(ticket.id)}>
+              <Edit size={16} />
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link href={ticketPath(ticket.id)}>
               <LucideSquareArrowOutUpRight size={16} />
             </Link>

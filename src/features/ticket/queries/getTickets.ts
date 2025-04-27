@@ -1,4 +1,4 @@
-import { asc } from 'drizzle-orm';
+import { desc } from 'drizzle-orm';
 
 import { db } from '@/db';
 import { ticket } from '@/db/schemas';
@@ -12,6 +12,6 @@ export async function getTickets() {
       content: true,
       status: true,
     },
-    orderBy: asc(ticket.created_at),
+    orderBy: desc(ticket.created_at),
   });
 }

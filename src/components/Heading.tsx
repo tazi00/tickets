@@ -7,10 +7,10 @@ type HeadingProps = {
 
 function Heading({ title, description }: HeadingProps) {
   return (
-    <>
-      <h2 className="text-2xl font-bold">{title}</h2>
-      <p>{description}</p>
-    </>
+    <div className="border-b border-muted-foreground pb-3 ">
+      <h2 className="text-2xl font-bold mb-1">{title}</h2>
+      <p className="text-sm ">{description}</p>
+    </div>
   );
 }
 
