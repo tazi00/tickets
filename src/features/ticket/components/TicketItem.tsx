@@ -1,16 +1,18 @@
 'use client';
 
-import { Card, CardContent, CardHeader } from '@/components/ui/card';
-import { cn } from '@/lib/utils';
+import { LucideSquareArrowOutUpRight, Trash } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
-import { TICKET_ICONS } from '../constants';
-import { ticketPath } from '@/utils/paths';
-import { LucideSquareArrowOutUpRight, Trash } from 'lucide-react';
-import { getTickets } from '../queries/getTickets';
-import { getTicket } from '../queries/getTicket';
+
 import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import { cn } from '@/lib/utils';
+import { ticketPath } from '@/utils/paths';
+
 import { deleteTicketById } from '../actions/deleteTicketById';
+import { TICKET_ICONS } from '../constants';
+import type { getTicket } from '../queries/getTicket';
+import type { getTickets } from '../queries/getTickets';
 
 type TicketItemProp = {
   ticket: Awaited<ReturnType<typeof getTickets>>[number] | Awaited<ReturnType<typeof getTicket>>;
@@ -18,11 +20,8 @@ type TicketItemProp = {
 };
 
 function TicketItem({ ticket, isDetail = false }: TicketItemProp) {
-  let IconComponent;
-
   if (!ticket) return null;
-
-  IconComponent = TICKET_ICONS[ticket.status];
+  const IconComponent = TICKET_ICONS[ticket.status];
 
   async function handleDelete(id: string) {
     await deleteTicketById(id);
@@ -66,7 +65,7 @@ function TicketItem({ ticket, isDetail = false }: TicketItemProp) {
               </Link>
             ) : (
               <Button
-                size={'icon'}
+                size="icon"
                 className="cursor-pointer"
                 onClick={() => handleDelete(ticket.id)}
               >

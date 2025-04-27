@@ -1,7 +1,7 @@
 import React from 'react';
-import TicketItem from './TicketItem';
+
 import { getTickets } from '../queries/getTickets';
-import { db } from '@/db';
+import TicketItem from './TicketItem';
 
 async function TicketItemList() {
   const ticketsData = await getTickets();

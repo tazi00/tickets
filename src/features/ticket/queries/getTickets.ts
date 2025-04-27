@@ -1,6 +1,7 @@
+import { asc } from 'drizzle-orm';
+
 import { db } from '@/db';
 import { ticket } from '@/db/schemas';
-import { asc, desc } from 'drizzle-orm';
 
 export async function getTickets() {
   await new Promise((res) => setTimeout(res, 2000));

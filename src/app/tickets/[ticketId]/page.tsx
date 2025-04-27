@@ -1,11 +1,11 @@
-import Placeholder from '@/components/Placeholder';
-import { ticketsData } from '@/data/ticketsData';
-import TicketItem from '@/features/ticket/components/TicketItem';
-import { getTicket } from '@/features/ticket/queries/getTicket';
-import { isValidUUID } from '@/utils/helpers';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import React from 'react';
+
+import Placeholder from '@/components/Placeholder';
+import TicketItem from '@/features/ticket/components/TicketItem';
+import { getTicket } from '@/features/ticket/queries/getTicket';
+import { isValidUUID } from '@/utils/helpers';
 
 type TicketProp = {
   params: Promise<{ ticketId: string }>;

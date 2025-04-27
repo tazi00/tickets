@@ -1,4 +1,5 @@
 import { FlatCompat } from '@eslint/eslintrc';
+import typescriptEslintPlugin from '@typescript-eslint/eslint-plugin';
 import prettierConfig from 'eslint-config-prettier';
 import importPlugin from 'eslint-plugin-import';
 import jsxA11yPlugin from 'eslint-plugin-jsx-a11y';
@@ -8,7 +9,6 @@ import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
-import typescriptEslintPlugin from '@typescript-eslint/eslint-plugin';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -17,28 +17,24 @@ const compat = new FlatCompat({
   baseDirectory: __dirname,
 });
 
-const eslintConfig = [
+export default [
   ...compat.extends('next/core-web-vitals', 'next/typescript'),
-
-  {
-    extends: ['plugin:prettier/recommended'],
-  },
   {
     plugins: {
       import: importPlugin,
       'simple-import-sort': simpleImportSort,
-      prettier: prettierPlugin,
       '@typescript-eslint': typescriptEslintPlugin,
       react: reactPlugin,
       'react-hooks': reactHooksPlugin,
       'jsx-a11y': jsxA11yPlugin,
+      prettier: prettierPlugin,
     },
     settings: {
       'import/resolver': {
-        typescript: {}, // Requires eslint-import-resolver-typescript
+        typescript: {},
       },
       react: {
-        extends: ['plugin:prettier/recommended'],
+        version: 'detect',
       },
     },
     rules: {
@@ -52,6 +48,7 @@ const eslintConfig = [
       'import/named': 'error',
       'import/no-cycle': 'error',
       'import/no-useless-path-segments': ['error', { noUselessIndex: true }],
+
       // React rules
       'react/jsx-curly-brace-presence': ['error', 'never'],
       'react/react-in-jsx-scope': 'off',
@@ -70,7 +67,6 @@ const eslintConfig = [
       'prettier/prettier': 'error',
     },
   },
+  ...compat.extends('plugin:prettier/recommended'),
   prettierConfig,
 ];
-
-export default eslintConfig;

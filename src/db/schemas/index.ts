@@ -1,4 +1,4 @@
-import { users } from './user.schema';
 import { ticket } from './ticket.schema';
+import { users } from './user.schema';
 
-export { users, ticket };
+export { ticket, users };
