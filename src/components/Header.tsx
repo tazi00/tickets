@@ -1,7 +1,9 @@
-import { ticketsPath } from '@/utils/paths';
 import { LucideKanban } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
+
+import { ticketsPath } from '@/utils/paths';
+
 import ThemeSwitcher from './theme/ThemeSwitcher';
 
 function Header() {
@@ -10,7 +12,7 @@ function Header() {
       <div className="container mx-auto">
         <div className="flex justify-between items-center">
           <div className="logo">
-            <Link href={'/'}>
+            <Link href="/">
               <h1 className="font-bold flex gap-1">
                 {' '}
                 <LucideKanban /> Tickets

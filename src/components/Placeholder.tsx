@@ -1,4 +1,5 @@
-import React, { ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import React from 'react';
 
 function Placeholder({ msg, children }: { msg: string; children: ReactNode }) {
   return (

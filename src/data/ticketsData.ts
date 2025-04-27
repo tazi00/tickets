@@ -22,5 +22,3 @@ export const ticketsData = [
     price: 100,
   },
 ];
-
-

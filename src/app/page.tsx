@@ -1,7 +1,8 @@
-import Heading from '@/components/Heading';
-import { ticketsPath } from '@/utils/paths';
 import Link from 'next/link';
 import React from 'react';
+
+import Heading from '@/components/Heading';
+import { ticketsPath } from '@/utils/paths';
 
 function HomePage() {
   // useState();

@@ -1,9 +1,10 @@
 'use client';
 
-import Placeholder from '@/components/Placeholder';
-import { ticketsPath } from '@/utils/paths';
 import Link from 'next/link';
 import React from 'react';
+
+import Placeholder from '@/components/Placeholder';
+import { ticketsPath } from '@/utils/paths';
 
 function TicketError() {
   return (
