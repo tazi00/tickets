@@ -8,7 +8,7 @@ import ThemeSwitcher from './theme/ThemeSwitcher';
 
 function Header() {
   return (
-    <header className="bg-primary  min-h-15 grid place-content-center grid-cols-1 border-b border-muted-foreground">
+    <header className="bg-primary  min-h-15 grid place-content-center grid-cols-1 border-b border-muted-foreground px-2 sm:px-0">
       <div className="container mx-auto">
         <div className="flex justify-between items-center">
           <div className="logo">
