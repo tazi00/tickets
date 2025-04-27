@@ -6,6 +6,7 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import Link from 'next/link';
 import { LucideKanban } from 'lucide-react';
 import Header from '@/components/Header';
+import ThemeProvider from '@/components/theme/ThemeProvider';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -28,12 +29,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html suppressHydrationWarning lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen grid grid-rows-[auto_1fr] text-primary-foreground`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen grid grid-rows-[auto_1fr]  text-primary-foreground`}
       >
-        <Header />
-        <main className="bg-primary">{children}</main>
+        <ThemeProvider>
+          <Header />
+          <main className="">{children}</main>
+        </ThemeProvider>
       </body>
     </html>
   );

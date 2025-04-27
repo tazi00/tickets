@@ -1,14 +1,10 @@
-import { ticketsPath } from '@/utils/paths';
-import Link from 'next/link';
-import React from 'react';
+import React, { ReactNode } from 'react';
 
-function Placeholder() {
+function Placeholder({ msg, children }: { msg: string; children: ReactNode }) {
   return (
     <div className="flex items-center flex-col gap-3 justify-center h-full">
-      <h3>Sorry There is No Ticket With Id</h3>
-      <Link href={ticketsPath} className="underline underline-offset-5">
-        Go To Tickets
-      </Link>
+      <h3>{msg}</h3>
+      {children}
     </div>
   );
 }

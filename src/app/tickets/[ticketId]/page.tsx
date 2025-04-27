@@ -1,9 +1,10 @@
 import Placeholder from '@/components/Placeholder';
 import { ticketsData } from '@/data/ticketsData';
 import TicketItem from '@/features/ticket/components/TicketItem';
-import { ticketsPath } from '@/utils/paths';
-import { Ticket } from 'lucide-react';
+import { getTicket } from '@/features/ticket/queries/getTicket';
+import { isValidUUID } from '@/utils/helpers';
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 import React from 'react';
 
 type TicketProp = {
@@ -12,14 +13,27 @@ type TicketProp = {
 
 async function TicketPage({ params }: TicketProp) {
   const ticketId = (await params).ticketId;
-  const ticket = ticketsData.find((item) => Number(item.id) === Number(ticketId));
 
-  if (!ticket) return <Placeholder />;
+  if (!isValidUUID(ticketId)) {
+    return (
+      <Placeholder msg="Invalid Ticket ID">
+        <Link href="/" className="underline underline-offset-5">
+          Go To Home
+        </Link>
+      </Placeholder>
+    );
+  }
+
+  const ticket = await getTicket(ticketId);
+  console.log(ticket);
+
+  if (!ticket) return notFound();
+
   return (
     <section className="ticket-sec mt-10">
       <div className="container mx-auto">
         <div className="flex justify-center">
-          <TicketItem ticket={ticket} isDetail={false} />
+          <TicketItem ticket={ticket} isDetail={true} />
         </div>
       </div>
     </section>

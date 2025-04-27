@@ -2,10 +2,11 @@ import { ticketsPath } from '@/utils/paths';
 import { LucideKanban } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
+import ThemeSwitcher from './theme/ThemeSwitcher';
 
 function Header() {
   return (
-    <header className="bg-primary  min-h-15 grid place-content-center grid-cols-1 border-b border-accent">
+    <header className="bg-primary  min-h-15 grid place-content-center grid-cols-1 border-b border-muted-foreground">
       <div className="container mx-auto">
         <div className="flex justify-between items-center">
           <div className="logo">
@@ -25,6 +26,9 @@ function Header() {
                 >
                   Tickets
                 </Link>
+              </li>
+              <li>
+                <ThemeSwitcher />
               </li>
             </ul>
           </nav>
