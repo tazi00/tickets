@@ -1,5 +1,7 @@
+'use client';
+
 import Form from 'next/form';
-import React from 'react';
+import React, { useActionState } from 'react';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -18,23 +20,39 @@ function TicketForm({
   mode = 'Create',
   ticket = { id: '', title: '', content: '' },
 }: TicketFormType) {
+  const [formState, action] = useActionState(
+    mode === 'Create' ? createTicket : updateTicket.bind(null, ticket.id),
+    {
+      message: '',
+    },
+  );
+
   return (
-    <Form
-      action={mode === 'Create' ? createTicket : updateTicket.bind(null, ticket.id)}
-      className="space-y-6"
-    >
-      {/* <input name="id" type="hidden" defaultValue={ticket.id} /> */}
-      <Label className="flex flex-col gap-4 items-start">
+    <Form action={action} className="space-y-6">
+      <Label className="flex flex-col gap-3 items-start">
         Title
-        <Input placeholder="e.g. ticket-abc" name="title" defaultValue={ticket.title} />
+        <Input
+          placeholder="e.g. ticket-abc"
+          name="title"
+          defaultValue={(formState?.payload?.get('title') as string) ?? ticket.title}
+        />
+        <span className="text-xs text-red-400">{formState?.fieldErrors?.title?.[0]}</span>
       </Label>
-      <Label className="flex flex-col gap-4 items-start">
+
+      <Label className="flex flex-col gap-3 items-start">
         Content
-        <Textarea placeholder="e.g. content-abc" name="content" defaultValue={ticket.content} />
+        <Textarea
+          placeholder="e.g. content-abc"
+          name="content"
+          defaultValue={(formState?.payload?.get('content') as string) ?? ticket.content}
+        />
+        <span className="text-xs text-red-400">{formState?.fieldErrors?.content?.[0]}</span>
       </Label>
       <Button className="w-full cursor-pointer" variant="secondary" type="submit">
         {mode === 'Create' ? 'Create' : 'Update'}
       </Button>
+
+      {formState?.message}
     </Form>
   );
 }
